@@ -29,5 +29,5 @@ func _on_resume_pressed():
 func _on_exit_pressed():
 	get_tree().quit()
 
-func _process(delta):
+func _process(_delta):
 	testEsc()

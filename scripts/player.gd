@@ -9,7 +9,7 @@ signal changed_movement_direction(_movement_direction : Vector3)
 
 var movement_direction : Vector3
 
-func _input(event):
+func _input(_event):
 	# Calculate movement direction
 	movement_direction.x = Input.get_action_strength("left") - Input.get_action_strength("right")
 	movement_direction.z = Input.get_action_strength("forward") - Input.get_action_strength("back")
@@ -28,7 +28,7 @@ func _ready():
 	# Start with the idle state
 	changed_movement_state.emit(movement_states["idle"])
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Emit movement direction if ongoing
 	if is_movement_ongoing():
 		changed_movement_direction.emit(movement_direction)
