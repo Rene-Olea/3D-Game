@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://42n7gbdrfffp"]
+
+[ext_resource type="PackedScene" uid="uid://dk11omhwfrced" path="res://assets/slime.glb" id="1_k3qja"]
+
+[node name="slime" instance=ExtResource("1_k3qja")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/3/rotation = Quaternion(0, -0.0995799, 0, 0.99503)
+bones/4/rotation = Quaternion(2.66315e-07, 2.15622e-07, -0.804968, 0.593318)
+bones/5/rotation = Quaternion(-0.00324655, -0.0120864, -0.259404, 0.965688)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(-0.00207272, 3.27575e-07, -0.0827941, 0.996565)
+bones/7/rotation = Quaternion(0.000312953, -3.46341e-07, 0.0125023, 0.999922)
+bones/8/rotation = Quaternion(2.66315e-07, -2.15622e-07, 0.804968, 0.593318)
+bones/9/rotation = Quaternion(-0.00324655, 0.0120864, 0.259404, 0.965688)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.00207272, -3.27123e-07, 0.0827941, 0.996565)
+bones/11/rotation = Quaternion(0.000312953, 3.46578e-07, -0.0125024, 0.999922)
+bones/12/rotation = Quaternion(-0.372155, 0.6341, 0.66043, 0.152484)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(-3.72529e-09, 1.39698e-08, -1.21072e-08, 1)
+bones/14/rotation = Quaternion(0.372155, 0.6341, 0.66043, -0.152484)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-3.72529e-09, -1.39698e-08, 1.21072e-08, 1)
+bones/17/rotation = Quaternion(3.72529e-09, 0, 0, 1)
