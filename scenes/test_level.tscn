@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c7yyjvtymdnod"]
+[gd_scene load_steps=34 format=3 uid="uid://c7yyjvtymdnod"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_6pdi2"]
 [ext_resource type="Resource" uid="uid://cw3ls1uqdwfsj" path="res://jump_state/jump.tres" id="2_1no5s"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/movement_controller.gd" id="5_3kx54"]
 [ext_resource type="Script" path="res://scripts/animation_controller.gd" id="6_3yhty"]
 [ext_resource type="PackedScene" uid="uid://42n7gbdrfffp" path="res://scenes/slime.tscn" id="7_i5l84"]
+[ext_resource type="PackedScene" uid="uid://c7babr32lfiy7" path="res://scenes/pause_menu.tscn" id="10_cciil"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hi4yb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -1299,6 +1300,10 @@ spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="Player/CameraRoot/CameraYaw/CameraPitch/SpringArm3D"]
 transform = Transform3D(1, 4.52534e-08, 5.95772e-09, -4.52534e-08, 0.965926, 0.258819, 5.95772e-09, -0.258819, 0.965926, 0, 0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_cciil")]
 
 [connection signal="changed_movement_direction" from="Player" to="Player/MovementController" method="_on_set_movement_direction"]
 [connection signal="changed_movement_state" from="Player" to="Player/MovementController" method="_on_set_movement_state"]
