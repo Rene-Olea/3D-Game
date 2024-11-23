@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://c7yyjvtymdnod"]
+[gd_scene load_steps=35 format=3 uid="uid://c7yyjvtymdnod"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_6pdi2"]
+[ext_resource type="PackedScene" uid="uid://dxgj1a2lfw2kx" path="res://scenes/killzone.tscn" id="1_owr8o"]
 [ext_resource type="Resource" uid="uid://cw3ls1uqdwfsj" path="res://jump_state/jump.tres" id="2_1no5s"]
 [ext_resource type="Resource" uid="uid://dejvo2vwv8lku" path="res://movement_state/idle.tres" id="2_j28m5"]
 [ext_resource type="Script" path="res://scripts/cameracontroller.gd" id="2_lcra4"]
@@ -1201,6 +1202,9 @@ node_connections = [&"TimeScale", 0, &"BlendSpace1D", &"jump", 0, &"on_floor_ble
 
 [node name="TestLevel" type="Node3D"]
 
+[node name="killzone" parent="." instance=ExtResource("1_owr8o")]
+transform = Transform3D(7.74966, 0, 0, 0, 7.74966, 0, 0, 0, 7.74966, 0, -2.99466, 0)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w67at")
 
@@ -1304,6 +1308,37 @@ transform = Transform3D(1, 4.52534e-08, 5.95772e-09, -4.52534e-08, 0.965926, 0.2
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_cciil")]
+
+[node name="platform" type="CSGBox3D" parent="."]
+transform = Transform3D(2.07644, 0, 0, 0, 2.07644, 0, 0, 0, 2.07644, 11.4287, 0, 0)
+use_collision = true
+
+[node name="platform2" type="CSGBox3D" parent="."]
+transform = Transform3D(2.07644, 0, 0, 0, 2.07644, 0, 0, 0, 2.07644, 18.1329, 0.412322, -0.185086)
+use_collision = true
+size = Vector3(0.939453, 1, 1.85254)
+
+[node name="platform3" type="CSGBox3D" parent="."]
+transform = Transform3D(2.07644, 0, 0, 0, 2.07644, 0, 0, 0, 2.07644, 18.6527, 0.412322, 5.67235)
+use_collision = true
+
+[node name="floor2" type="CSGBox3D" parent="."]
+transform = Transform3D(20.06, 0, 0, 0, 1, 0, 0, 0, 22.425, 33.7898, -0.5, 18.7584)
+use_collision = true
+
+[node name="floor3" type="CSGBox3D" parent="."]
+transform = Transform3D(20.06, 0, 0, 0, 1, 0, 0, 0, 22.425, -8.81828, -0.358261, 46.88)
+use_collision = true
+
+[node name="platform4" type="CSGBox3D" parent="."]
+transform = Transform3D(2.07644, 0, 0, 0, 2.07644, 0, 0, 0, 2.07644, 17.2367, 0.442426, 30.8265)
+use_collision = true
+size = Vector3(2.53235, 1, 2.70093)
+
+[node name="platform5" type="CSGBox3D" parent="."]
+transform = Transform3D(2.07644, 0, 0, 0, 2.07644, 0, 0, 0, 2.07644, 8.69618, 0.442426, 39.0517)
+use_collision = true
+size = Vector3(2.53235, 1, 3.45093)
 
 [connection signal="changed_movement_direction" from="Player" to="Player/MovementController" method="_on_set_movement_direction"]
 [connection signal="changed_movement_state" from="Player" to="Player/MovementController" method="_on_set_movement_state"]
