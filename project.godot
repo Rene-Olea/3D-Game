@@ -71,3 +71,12 @@ esc={
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
+
+[rendering]
+
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
+environment/ssao/quality=3
+environment/ssao/fadeout_from=0.0
+environment/ssil/quality=3
+environment/screen_space_reflection/roughness_quality=3
+environment/subsurface_scattering/subsurface_scattering_quality=2

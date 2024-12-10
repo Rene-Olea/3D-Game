@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://c7yyjvtymdnod"]
+[gd_scene load_steps=37 format=3 uid="uid://c7yyjvtymdnod"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_6pdi2"]
-[ext_resource type="PackedScene" path="res://scenes/killzone.tscn" id="1_owr8o"]
+[ext_resource type="PackedScene" uid="uid://c6uew1wfpkt16" path="res://interactable_objects/flag/flag_3d.tscn" id="1_khj8f"]
+[ext_resource type="PackedScene" uid="uid://dxgj1a2lfw2kx" path="res://interactable_objects/kill_zone/killzone.tscn" id="1_owr8o"]
 [ext_resource type="Resource" uid="uid://cw3ls1uqdwfsj" path="res://jump_state/jump.tres" id="2_1no5s"]
 [ext_resource type="Resource" uid="uid://dejvo2vwv8lku" path="res://movement_state/idle.tres" id="2_j28m5"]
 [ext_resource type="Script" path="res://scripts/cameracontroller.gd" id="2_lcra4"]
@@ -11,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/animation_controller.gd" id="6_3yhty"]
 [ext_resource type="PackedScene" uid="uid://42n7gbdrfffp" path="res://scenes/slime.tscn" id="7_i5l84"]
 [ext_resource type="PackedScene" uid="uid://c7babr32lfiy7" path="res://scenes/pause_menu.tscn" id="10_cciil"]
+[ext_resource type="QuadMesh" uid="uid://bb0eu65js7ogc" path="res://game_shader/game_shader_quad_mesh.tres" id="12_mj847"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hi4yb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,8 +24,27 @@ sky_material = SubResource("ProceduralSkyMaterial_hi4yb")
 [sub_resource type="Environment" id="Environment_w67at"]
 background_mode = 2
 sky = SubResource("Sky_6dlto")
+ambient_light_energy = 16.0
 tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 8.0
+ssao_intensity = 3.0
+ssao_detail = 5.0
+ssao_horizon = 0.5
+ssao_sharpness = 1.0
+ssao_light_affect = 0.5
+ssao_ao_channel_affect = 1.0
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_min_cell_size = 64.0
+sdfgi_energy = 1.5
 glow_enabled = true
+glow_normalized = true
+glow_strength = 0.3
+glow_hdr_luminance_cap = 0.0
+glow_map_strength = 0.5
+adjustment_enabled = true
+adjustment_saturation = 1.31
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_175e1"]
 height = 1.4
@@ -1202,8 +1223,11 @@ node_connections = [&"TimeScale", 0, &"BlendSpace1D", &"jump", 0, &"on_floor_ble
 
 [node name="TestLevel" type="Node3D"]
 
+[node name="Flag3D" parent="." instance=ExtResource("1_khj8f")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -8.0778, 0, 45.6075)
+
 [node name="killzone" parent="." instance=ExtResource("1_owr8o")]
-transform = Transform3D(7.74966, 0, 0, 0, 7.74966, 0, 0, 0, 7.74966, 0, -2.99466, 0)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -4, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w67at")
@@ -1305,6 +1329,9 @@ spring_length = 3.0
 [node name="Camera3D" type="Camera3D" parent="Player/CameraRoot/CameraYaw/CameraPitch/SpringArm3D"]
 transform = Transform3D(1, 4.52534e-08, 5.95772e-09, -4.52534e-08, 0.965926, 0.258819, 5.95772e-09, -0.258819, 0.965926, 0, 0, 0)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/CameraRoot/CameraYaw/CameraPitch/SpringArm3D/Camera3D"]
+mesh = ExtResource("12_mj847")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_cciil")]
@@ -1339,6 +1366,11 @@ size = Vector3(2.53235, 1, 2.70093)
 transform = Transform3D(2.07644, 0, 0, 0, 2.07644, 0, 0, 0, 2.07644, 8.69618, 0.442426, 39.0517)
 use_collision = true
 size = Vector3(2.53235, 1, 3.45093)
+
+[node name="platform6" type="CSGBox3D" parent="."]
+transform = Transform3D(4.3116, 0, 0, 0, 4.3116, 0, 0, 0, 4.3116, -2.07479, -1.03331, 23.4247)
+use_collision = true
+size = Vector3(2.53235, 1, 3.33102)
 
 [connection signal="changed_movement_direction" from="Player" to="Player/MovementController" method="_on_set_movement_direction"]
 [connection signal="changed_movement_state" from="Player" to="Player/MovementController" method="_on_set_movement_state"]

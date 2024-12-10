@@ -1,0 +1,17 @@
+[gd_resource type="QuadMesh" load_steps=3 format=3 uid="uid://bb0eu65js7ogc"]
+
+[ext_resource type="Shader" path="res://game_shader/BLINN_PHONG_SPEC_LIGHT_SHADER.gdshader" id="1_g8gjn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1a7g"]
+render_priority = 0
+shader = ExtResource("1_g8gjn")
+shader_parameter/light_position = Vector3(0, 1, 2)
+shader_parameter/light_color = Vector3(1, 1, 1)
+shader_parameter/near_plane = 0.1
+shader_parameter/far_plane = 100.0
+
+[resource]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("ShaderMaterial_h1a7g")
+flip_faces = true
+size = Vector2(2, 2)
