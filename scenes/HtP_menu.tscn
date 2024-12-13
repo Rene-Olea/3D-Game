@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2vdgjgqq5mna"]
+
+[ext_resource type="Script" path="res://scripts/about_menu.gd" id="1_vn2yy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw6n5"]
+bg_color = Color(0.25098, 0.513726, 1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vn2yy")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mw6n5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -88.0
+offset_right = 57.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 41
+text = "BACK"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.5
+offset_top = -130.0
+offset_right = 291.5
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "Controls:
+WASD to move around
+Shift to run
+Spacebar to jump
+Use mouse to see
+ESC to pause or quit
+
+Goal:
+Escape the island while trying to avoid being hit.
+ If you are taken out by the turtles 
+you have to start over entirely."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

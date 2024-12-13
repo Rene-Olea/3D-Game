@@ -1,23 +1,22 @@
 extends Control
 
 func _ready():
-	# Hide the pause menu initially
 	visible = false
 
 func resume():
-	visible = false  # Hide the pause menu
+	visible = false
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("blur")
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  # Lock the mouse back for gameplay
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func pause():
-	visible = true  # Show the pause menu
+	visible = true
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # Show the mouse cursor for menu interaction
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func testEsc():
-	if Input.is_action_just_pressed("ui_cancel"):  # Use "ui_cancel" for Esc
+	if Input.is_action_just_pressed("ui_cancel"):
 		if visible:
 			resume()
 		else:

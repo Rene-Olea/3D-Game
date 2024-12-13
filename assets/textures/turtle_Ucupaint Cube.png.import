@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjyjw45ai6xv"
-path.s3tc="res://.godot/imported/slime_Cube Color.png-c1af32b1ed219a29606e7906deeecf81.s3tc.ctex"
+uid="uid://572vvj88sqxi"
+path.s3tc="res://.godot/imported/turtle_Ucupaint Cube.png-26172ec82ee5ae223a8235ff9fc15b8d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "213df1b65ab67f985ed21d7c173f6591"
+"md5": "f64539402f71f2effde97b09649485eb"
 }
 
 [deps]
 
-source_file="res://assets/slime_Cube Color.png"
-dest_files=["res://.godot/imported/slime_Cube Color.png-c1af32b1ed219a29606e7906deeecf81.s3tc.ctex"]
+source_file="res://assets/textures/turtle_Ucupaint Cube.png"
+dest_files=["res://.godot/imported/turtle_Ucupaint Cube.png-26172ec82ee5ae223a8235ff9fc15b8d.s3tc.ctex"]
 
 [params]
 

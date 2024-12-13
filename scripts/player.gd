@@ -3,7 +3,11 @@ extends CharacterBody3D
 signal pressed_jump(jump_state : MyJumpState)
 signal changed_movement_state(_movement_state : MovementState)
 signal changed_movement_direction(_movement_direction : Vector3)
+signal health_changed(new_health: float)
+signal player_died
 
+@export var max_health: float = 100.0
+var current_health: float = max_health
 @export var jump_states : Dictionary
 @export var movement_states : Dictionary
 
@@ -17,11 +21,10 @@ func _input(_event):
 	if is_movement_ongoing():
 		# Check for specific states
 		if Input.is_action_pressed("run"):
-			changed_movement_state.emit(movement_states["run"])  # Running
+			changed_movement_state.emit(movement_states["run"])
 		else:
-			changed_movement_state.emit(movement_states["walk"])  # Walking (default)
+			changed_movement_state.emit(movement_states["walk"])
 	else:
-		# No movement input; set to idle
 		changed_movement_state.emit(movement_states["idle"])
 
 func _ready():
@@ -40,3 +43,11 @@ func _physics_process(_delta):
 func is_movement_ongoing() -> bool:
 	# Determine if any movement input is active
 	return abs(movement_direction.x) > 0 or abs(movement_direction.z) > 0
+	
+func take_damage(amount: float):
+	current_health = max(0, current_health - amount)
+	health_changed.emit(current_health)
+	
+	if current_health <= 0:
+		player_died.emit()
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/death_menu.tscn")

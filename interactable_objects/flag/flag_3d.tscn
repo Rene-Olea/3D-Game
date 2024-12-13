@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6uew1wfpkt16"]
+[gd_scene load_steps=8 format=3 uid="uid://c6uew1wfpkt16"]
 
 [ext_resource type="PackedScene" uid="uid://drkqkt2fp2jca" path="res://interactable_objects/flag/flag.glb" id="1_gjsm0"]
 [ext_resource type="Script" path="res://interactable_objects/flag/flag_3d.gd" id="2_1g2ow"]
 [ext_resource type="Shader" path="res://interactable_objects/flag/goal_flag.gdshader" id="2_pdycc"]
 [ext_resource type="PackedScene" uid="uid://bxg6oejpaitdt" path="res://interactable_objects/flag/flag_reached_screen.tscn" id="3_5y267"]
-[ext_resource type="Script" path="res://interactable_objects/flag/flag_reached_screen.gd" id="4_31php"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfpnh"]
 albedo_color = Color(1, 0.623529, 0.101961, 1)
@@ -20,9 +19,7 @@ radius = 2.0
 [node name="Flag3D" instance=ExtResource("1_gjsm0")]
 script = ExtResource("2_1g2ow")
 
-[node name="FlagReachedScreen" type="CanvasLayer" parent="." index="0" instance=ExtResource("3_5y267")]
-visible = false
-script = ExtResource("4_31php")
+[node name="FlagReachedScreen" parent="." index="0" instance=ExtResource("3_5y267")]
 
 [node name="GoalBody" parent="." index="1"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

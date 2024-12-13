@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dk11omhwfrced"
-path="res://.godot/imported/slime.glb-67ee7e2a83f768cc9e866c28d8b44fb9.scn"
+path="res://.godot/imported/slime.glb-497f91b8feb9816dcbfca8c93879e7ba.scn"
 
 [deps]
 
-source_file="res://assets/slime.glb"
-dest_files=["res://.godot/imported/slime.glb-67ee7e2a83f768cc9e866c28d8b44fb9.scn"]
+source_file="res://assets/models/slime.glb"
+dest_files=["res://.godot/imported/slime.glb-497f91b8feb9816dcbfca8c93879e7ba.scn"]
 
 [params]
 

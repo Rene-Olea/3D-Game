@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ckcfk7ycftbho"
-path="res://.godot/imported/untitled.glb-df938797ac6d51018a84d2cff9a3ab2e.scn"
+uid="uid://chpi5imo8ynwo"
+path="res://.godot/imported/turtle.glb-95253780fdd6e8b3946e39ba874f8e17.scn"
 
 [deps]
 
-source_file="res://assets/untitled.glb"
-dest_files=["res://.godot/imported/untitled.glb-df938797ac6d51018a84d2cff9a3ab2e.scn"]
+source_file="res://assets/models/turtle.glb"
+dest_files=["res://.godot/imported/turtle.glb-95253780fdd6e8b3946e39ba874f8e17.scn"]
 
 [params]
 

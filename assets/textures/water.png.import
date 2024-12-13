@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4trvr1y4a84f"
-path.s3tc="res://.godot/imported/untitled_Ucupaint Cube.png-d00161e71d04abb2abbeea5274c9862a.s3tc.ctex"
+uid="uid://bm6s3xtsbuadb"
+path.s3tc="res://.godot/imported/water.png-f21c23d7964344de93bfec34a6ac1079.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "d15a3db47be8231af08ea854fec3add9"
-}
 
 [deps]
 
-source_file="res://assets/untitled_Ucupaint Cube.png"
-dest_files=["res://.godot/imported/untitled_Ucupaint Cube.png-d00161e71d04abb2abbeea5274c9862a.s3tc.ctex"]
+source_file="res://assets/textures/water.png"
+dest_files=["res://.godot/imported/water.png-f21c23d7964344de93bfec34a6ac1079.s3tc.ctex"]
 
 [params]
 

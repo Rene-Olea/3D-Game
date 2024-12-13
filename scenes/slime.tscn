@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://42n7gbdrfffp"]
 
-[ext_resource type="PackedScene" uid="uid://dk11omhwfrced" path="res://assets/slime.glb" id="1_k3qja"]
+[ext_resource type="PackedScene" uid="uid://dk11omhwfrced" path="res://assets/models/slime.glb" id="1_k3qja"]
 
 [node name="slime" instance=ExtResource("1_k3qja")]
 
@@ -17,9 +17,7 @@ bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(-0.00207272, -3.27123e-07, 0.0827941, 0.996565)
 bones/11/rotation = Quaternion(0.000312953, 3.46578e-07, -0.0125024, 0.999922)
 bones/12/rotation = Quaternion(-0.372155, 0.6341, 0.66043, 0.152484)
-bones/12/scale = Vector3(1, 1, 1)
 bones/13/rotation = Quaternion(-3.72529e-09, 1.39698e-08, -1.21072e-08, 1)
 bones/14/rotation = Quaternion(0.372155, 0.6341, 0.66043, -0.152484)
-bones/14/scale = Vector3(1, 1, 1)
 bones/15/rotation = Quaternion(-3.72529e-09, -1.39698e-08, 1.21072e-08, 1)
 bones/17/rotation = Quaternion(3.72529e-09, 0, 0, 1)
