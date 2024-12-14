@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dg423ku10t1x6"
+path="res://.godot/imported/Enemy Run Sound Effect.wav-30aa4e4291f8cc2db74e695c2de3a7ca.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Sound Effects/Enemy Sound Effects/Enemy Run Sound Effect.wav"
+dest_files=["res://.godot/imported/Enemy Run Sound Effect.wav-30aa4e4291f8cc2db74e695c2de3a7ca.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c4eo4bab0rsvp"
+path="res://.godot/imported/3D GAME LEVEL MUSIC.wav-ac5893ebac30c7fd4a5410886c5a2667.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Game Music/3D GAME LEVEL MUSIC.wav"
+dest_files=["res://.godot/imported/3D GAME LEVEL MUSIC.wav-ac5893ebac30c7fd4a5410886c5a2667.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

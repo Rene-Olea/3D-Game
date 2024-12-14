@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://e8pn6w5gp3g0"
+path="res://.godot/imported/Slime Walk Sound Effect.wav-621238c13e0cf5042dc757ce77fca99b.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Sound Effects/Player Sound Effects/Slime Walk Sound Effect.wav"
+dest_files=["res://.godot/imported/Slime Walk Sound Effect.wav-621238c13e0cf5042dc757ce77fca99b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

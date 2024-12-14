@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dy6f12o6v6igj"
+path="res://.godot/imported/Sword Sound Effect.wav-5a3ee6fc43c82167edf258c2a59a7487.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Sound Effects/Enemy Sound Effects/Sword Sound Effect.wav"
+dest_files=["res://.godot/imported/Sword Sound Effect.wav-5a3ee6fc43c82167edf258c2a59a7487.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
