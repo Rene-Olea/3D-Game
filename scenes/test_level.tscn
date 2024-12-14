@@ -1,8 +1,9 @@
-[gd_scene load_steps=55 format=3 uid="uid://c7yyjvtymdnod"]
+[gd_scene load_steps=56 format=3 uid="uid://c7yyjvtymdnod"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_6pdi2"]
 [ext_resource type="PackedScene" uid="uid://c6uew1wfpkt16" path="res://interactable_objects/flag/flag_3d.tscn" id="1_khj8f"]
 [ext_resource type="PackedScene" uid="uid://duwc8it2tvtmc" path="res://scenes/boat.tscn" id="1_kmi73"]
+[ext_resource type="AudioStream" uid="uid://c4eo4bab0rsvp" path="res://assets/sounds/Game Music/3D GAME LEVEL MUSIC.wav" id="1_l5fk8"]
 [ext_resource type="PackedScene" uid="uid://i7vvphy83kr7" path="res://scenes/island.tscn" id="1_ojf8p"]
 [ext_resource type="PackedScene" uid="uid://dxgj1a2lfw2kx" path="res://interactable_objects/kill_zone/killzone.tscn" id="1_owr8o"]
 [ext_resource type="Resource" uid="uid://cw3ls1uqdwfsj" path="res://jump_state/jump.tres" id="2_1no5s"]
@@ -1256,6 +1257,10 @@ size = Vector3(1, 1.03229, 1.74121)
 
 [node name="TestLevel" type="Node3D"]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_l5fk8")
+autoplay = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w67at")
 
@@ -1345,6 +1350,10 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849679, 0)
 shape = SubResource("CapsuleShape3D_dgo7n")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player"]
+unique_name_in_owner = true
+bus = &"Player_SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

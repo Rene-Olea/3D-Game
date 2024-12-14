@@ -21,6 +21,7 @@ func _input(_event):
 	if is_movement_ongoing():
 		# Check for specific states
 		if Input.is_action_pressed("run"):
+			
 			changed_movement_state.emit(movement_states["run"])
 		else:
 			changed_movement_state.emit(movement_states["walk"])
