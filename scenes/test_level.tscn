@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c7yyjvtymdnod"]
+[gd_scene load_steps=60 format=3 uid="uid://c7yyjvtymdnod"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_6pdi2"]
 [ext_resource type="PackedScene" uid="uid://c6uew1wfpkt16" path="res://interactable_objects/flag/flag_3d.tscn" id="1_khj8f"]
@@ -14,8 +14,12 @@
 [ext_resource type="Resource" uid="uid://bes0x7unbq8n6" path="res://movement_state/run.tres" id="4_1ti8k"]
 [ext_resource type="Script" path="res://scripts/movement_controller.gd" id="5_3kx54"]
 [ext_resource type="Script" path="res://scripts/animation_controller.gd" id="6_3yhty"]
+[ext_resource type="AudioStream" uid="uid://dskakk0yi3dtr" path="res://assets/sounds/Sound Effects/Player Sound Effects/Slime Dying Sound Effect.wav" id="7_6pwy0"]
 [ext_resource type="PackedScene" uid="uid://42n7gbdrfffp" path="res://scenes/slime.tscn" id="7_i5l84"]
+[ext_resource type="AudioStream" uid="uid://e8pn6w5gp3g0" path="res://assets/sounds/Sound Effects/Player Sound Effects/Slime Walk Sound Effect.wav" id="9_31wj6"]
 [ext_resource type="PackedScene" uid="uid://c7babr32lfiy7" path="res://scenes/pause_menu.tscn" id="10_cciil"]
+[ext_resource type="AudioStream" uid="uid://e7iahh1mr782" path="res://assets/sounds/Sound Effects/Player Sound Effects/Slime Run Sound Effect.wav" id="10_mgux4"]
+[ext_resource type="AudioStream" uid="uid://b3m30r6s1burt" path="res://assets/sounds/Sound Effects/Player Sound Effects/Slime Jump Sound Effect.wav" id="11_isfin"]
 [ext_resource type="PackedScene" uid="uid://bng8ibwkoth0s" path="res://scenes/big_clif.tscn" id="15_4qfy5"]
 [ext_resource type="PackedScene" uid="uid://bvf8u05mbqjk4" path="res://scenes/palm_tree.tscn" id="16_lvwok"]
 [ext_resource type="PackedScene" uid="uid://cm2jmea82hhny" path="res://scenes/edge_step.tscn" id="16_pa7oo"]
@@ -1259,6 +1263,7 @@ size = Vector3(1, 1.03229, 1.74121)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_l5fk8")
+volume_db = -3.0
 autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -1268,7 +1273,7 @@ environment = SubResource("Environment_w67at")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, -23)
 shadow_enabled = true
 
-[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("death_sound_player") groups=["player"]]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.19414, 0.544817, -22.5991)
 script = ExtResource("1_6pdi2")
 jump_states = {
@@ -1279,16 +1284,23 @@ movement_states = {
 "run": ExtResource("4_1ti8k"),
 "walk": ExtResource("3_j64no")
 }
+death_sound_player = NodePath("DeathSoundPlayer")
+death_sound = ExtResource("7_6pwy0")
 
 [node name="MovementController" type="Node" parent="Player" node_paths=PackedStringArray("player", "mesh_root")]
 script = ExtResource("5_3kx54")
 player = NodePath("..")
 mesh_root = NodePath("../MeshRoot")
 
-[node name="AnimationController" type="Node" parent="Player" node_paths=PackedStringArray("animation_tree", "player")]
+[node name="AnimationController" type="Node" parent="Player" node_paths=PackedStringArray("animation_tree", "player", "footstep_player", "effect_player")]
 script = ExtResource("6_3yhty")
 animation_tree = NodePath("../MeshRoot/AnimationTree")
 player = NodePath("..")
+footstep_player = NodePath("../AudioStreamPlayer3D")
+effect_player = NodePath("../EffectPlayer")
+walk_sound = ExtResource("9_31wj6")
+run_sound = ExtResource("10_mgux4")
+jump_sound = ExtResource("11_isfin")
 
 [node name="MeshRoot" type="Node3D" parent="Player"]
 
@@ -1352,8 +1364,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849679, 0)
 shape = SubResource("CapsuleShape3D_dgo7n")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player"]
-unique_name_in_owner = true
-bus = &"Player_SFX"
+
+[node name="EffectPlayer" type="AudioStreamPlayer3D" parent="Player"]
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer3D" parent="Player"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

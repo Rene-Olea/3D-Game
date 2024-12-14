@@ -10,6 +10,8 @@ signal player_died
 var current_health: float = max_health
 @export var jump_states : Dictionary
 @export var movement_states : Dictionary
+@export var death_sound_player: AudioStreamPlayer3D
+@export var death_sound: AudioStream
 
 var movement_direction : Vector3
 
@@ -50,5 +52,11 @@ func take_damage(amount: float):
 	health_changed.emit(current_health)
 	
 	if current_health <= 0:
+		if death_sound_player and death_sound:
+			death_sound_player.stream = death_sound
+			death_sound_player.play()
+			# Wait for sound to start playing before changing scene
+			await get_tree().create_timer(0.1).timeout
+		
 		player_died.emit()
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/death_menu.tscn")

@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2igtvud6hl8o"]
+[gd_scene load_steps=12 format=3 uid="uid://c2igtvud6hl8o"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_qihdb"]
 [ext_resource type="PackedScene" uid="uid://chpi5imo8ynwo" path="res://assets/models/turtle.glb" id="2_s8xt0"]
+[ext_resource type="AudioStream" uid="uid://dg423ku10t1x6" path="res://assets/sounds/Sound Effects/Enemy Sound Effects/Enemy Run Sound Effect.wav" id="2_sjb16"]
+[ext_resource type="AudioStream" uid="uid://dy6f12o6v6igj" path="res://assets/sounds/Sound Effects/Enemy Sound Effects/Sword Sound Effect.wav" id="3_gn8hp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mn0nx"]
 radius = 10.0
@@ -559,9 +561,13 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_cijpy"]
 size = Vector3(0.25, 0.335, 0.835)
 
-[node name="enemy" type="CharacterBody3D" node_paths=PackedStringArray("attack_hitbox", "animation_player", "model")]
+[node name="enemy" type="CharacterBody3D" node_paths=PackedStringArray("attack_hitbox", "footstep_player", "effect_player", "animation_player", "model")]
 script = ExtResource("1_qihdb")
 attack_hitbox = NodePath("Area3D2")
+footstep_player = NodePath("FootstepPlayer")
+effect_player = NodePath("EffectPlayer")
+run_sound = ExtResource("2_sjb16")
+attack_sound = ExtResource("3_gn8hp")
 animation_player = NodePath("turtle/AnimationPlayer")
 model = NodePath("turtle")
 
@@ -617,5 +623,9 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133909, 1.33553, 0.702171)
 visible = false
 shape = SubResource("BoxShape3D_cijpy")
+
+[node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="."]
+
+[node name="EffectPlayer" type="AudioStreamPlayer3D" parent="."]
 
 [editable path="turtle"]

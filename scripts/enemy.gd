@@ -13,6 +13,12 @@ enum State {
 @export var damage: float = 20.0
 @export var attack_hitbox: Area3D
 
+# Sound related exports
+@export var footstep_player: AudioStreamPlayer3D
+@export var effect_player: AudioStreamPlayer3D
+@export var run_sound: AudioStream
+@export var attack_sound: AudioStream
+
 # Node references
 @export var animation_player: AnimationPlayer
 @export var model: Node3D
@@ -59,12 +65,20 @@ func _physics_process(delta):
 func handle_idle_state():
 	if player == null:
 		return
+	
+	# Stop running sound if it's playing
+	if footstep_player and footstep_player.playing:
+		footstep_player.stop()
 		
 	var distance = global_position.distance_to(player.global_position)
 	if distance < detection_radius:
 		current_state = State.CHASE
 		if animation_player:
 			animation_player.play("run")
+			# Start running sound when transitioning to chase
+			if footstep_player and run_sound:
+				footstep_player.stream = run_sound
+				footstep_player.play()
 
 func handle_chase_state(delta):
 	if player == null:
@@ -78,11 +92,22 @@ func handle_chase_state(delta):
 		velocity.z = 0
 		if animation_player:
 			animation_player.play("idle")
+			# Stop running sound
+			if footstep_player and footstep_player.playing:
+				footstep_player.stop()
 		return
 	
 	if distance < attack_radius and can_attack:
 		current_state = State.ATTACK
+		# Stop running sound when attacking
+		if footstep_player and footstep_player.playing:
+			footstep_player.stop()
 		return
+	
+	# Make sure running sound is playing while chasing
+	if footstep_player and run_sound and !footstep_player.playing:
+		footstep_player.stream = run_sound
+		footstep_player.play()
 	
 	# Move towards player
 	var direction = (player.global_position - global_position).normalized()
@@ -107,6 +132,11 @@ func handle_attack_state():
 func perform_attack():
 	if animation_player:
 		animation_player.play("attack")
+		# Play attack sound at start of attack
+		if effect_player and attack_sound:
+			effect_player.stream = attack_sound
+			effect_player.play()
+			
 		if attack_hitbox:
 			attack_hitbox.monitoring = true
 			await get_tree().create_timer(0.3).timeout
@@ -115,6 +145,10 @@ func perform_attack():
 		await animation_player.animation_finished
 		if current_state == State.CHASE:
 			animation_player.play("run")
+			# Resume running sound after attack
+			if footstep_player and run_sound:
+				footstep_player.stream = run_sound
+				footstep_player.play()
 
 func _on_attack_timer_timeout():
 	can_attack = true
