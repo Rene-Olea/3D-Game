@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7d4nmuhr7jv1"]
 
 [ext_resource type="Script" path="res://scripts/victory_menu.gd" id="1_nkkcy"]
-[ext_resource type="AudioStream" uid="uid://bxrbomkpu7n7s" path="res://assets/sounds/Game Music/3D GAME MENU MUSIC.wav" id="2_ox2ve"]
+[ext_resource type="AudioStream" uid="uid://brvpp2ccmjv25" path="res://assets/sounds/Sound Effects/Game Victory Sound Effect - Children Yay.wav" id="2_wvv10"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw6n5"]
 bg_color = Color(0.25098, 0.513726, 1, 1)
@@ -16,7 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_nkkcy")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ox2ve")
+stream = ExtResource("2_wvv10")
 autoplay = true
 
 [node name="Panel" type="Panel" parent="."]

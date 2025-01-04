@@ -10,10 +10,16 @@ config_version=5
 
 [application]
 
-config/name="CSCE 552 3d game"
+config/name="Slime's Adventure - The Beginning"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://assets/icon.svg"
+config/icon="res://assets/game icon/3D_GAME_ICON_512x512.png"
+config/macos_native_icon="res://assets/game icon/3D_GAME_ICON_MACOS.icns"
+config/windows_native_icon="res://assets/game icon/3D_GAME_ICON_WINDOWS.ico"
+
+[autoload]
+
+MainMenuAudioPlayer="*res://scenes/main_menu_audio_player.tscn"
 
 [input]
 
@@ -74,6 +80,8 @@ esc={
 
 [rendering]
 
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
 environment/ssao/quality=3
 environment/ssao/fadeout_from=0.0

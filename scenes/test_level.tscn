@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://c7yyjvtymdnod"]
+[gd_scene load_steps=62 format=3 uid="uid://c7yyjvtymdnod"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_6pdi2"]
 [ext_resource type="PackedScene" uid="uid://c6uew1wfpkt16" path="res://interactable_objects/flag/flag_3d.tscn" id="1_khj8f"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://e7iahh1mr782" path="res://assets/sounds/Sound Effects/Player Sound Effects/Slime Run Sound Effect.wav" id="10_mgux4"]
 [ext_resource type="AudioStream" uid="uid://b3m30r6s1burt" path="res://assets/sounds/Sound Effects/Player Sound Effects/Slime Jump Sound Effect.wav" id="11_isfin"]
 [ext_resource type="PackedScene" uid="uid://bng8ibwkoth0s" path="res://scenes/big_clif.tscn" id="15_4qfy5"]
+[ext_resource type="QuadMesh" uid="uid://bb0eu65js7ogc" path="res://game_shader/game_shader_quad_mesh.tres" id="15_sikjt"]
 [ext_resource type="PackedScene" uid="uid://bvf8u05mbqjk4" path="res://scenes/palm_tree.tscn" id="16_lvwok"]
 [ext_resource type="PackedScene" uid="uid://cm2jmea82hhny" path="res://scenes/edge_step.tscn" id="16_pa7oo"]
 [ext_resource type="PackedScene" uid="uid://dowandovi6k2l" path="res://scenes/cliffedge.tscn" id="17_83io7"]
@@ -28,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://poh8cwnr3sty" path="res://scenes/water.tscn" id="19_7ymwm"]
 [ext_resource type="PackedScene" uid="uid://c2igtvud6hl8o" path="res://scenes/enemy.tscn" id="20_5yv31"]
 [ext_resource type="Script" path="res://scripts/checkpoint.gd" id="21_oka44"]
+[ext_resource type="AudioStream" uid="uid://c5gtjeyp7uj2u" path="res://assets/sounds/Sound Effects/Water Splash Sound Effect.wav" id="27_kno0k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hi4yb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -1261,9 +1263,13 @@ size = Vector3(1, 1.03229, 1.74121)
 
 [node name="TestLevel" type="Node3D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_cciil")]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_l5fk8")
-volume_db = -3.0
+volume_db = -4.2
 autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -1272,6 +1278,18 @@ environment = SubResource("Environment_w67at")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, -23)
 shadow_enabled = true
+
+[node name="killzone" parent="." node_paths=PackedStringArray("splash_sound") instance=ExtResource("1_owr8o")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -2.56946, 0)
+splash_sound = NodePath("AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="killzone"]
+stream = ExtResource("27_kno0k")
+attenuation_model = 3
+panning_strength = 0.0
+
+[node name="water" parent="." instance=ExtResource("19_7ymwm")]
+transform = Transform3D(-287.78, 0, 0, 0, 1, 0, 0, 0, -287.78, 0, -1.70111, 0)
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("death_sound_player") groups=["player"]]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.19414, 0.544817, -22.5991)
@@ -1327,6 +1345,9 @@ bones/15/rotation = Quaternion(-0.146421, 0.145745, 0.0645389, 0.976296)
 bones/16/rotation = Quaternion(-0.728157, -7.33538e-18, 6.32456e-18, 0.68541)
 bones/17/rotation = Quaternion(0.173648, -3.81377e-17, -5.67539e-18, 0.984808)
 
+[node name="Empty" parent="Player/MeshRoot/slime" index="1"]
+visible = false
+
 [node name="AnimationPlayer" parent="Player/MeshRoot/slime" index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_d0rxi")
@@ -1359,19 +1380,78 @@ spring_length = 3.0
 [node name="Camera3D" type="Camera3D" parent="Player/CameraRoot/CameraYaw/CameraPitch/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
 
+[node name="GameShader" type="MeshInstance3D" parent="Player/CameraRoot/CameraYaw/CameraPitch/SpringArm3D/Camera3D"]
+mesh = ExtResource("15_sikjt")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849679, 0)
 shape = SubResource("CapsuleShape3D_dgo7n")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player"]
+attenuation_model = 3
 
 [node name="EffectPlayer" type="AudioStreamPlayer3D" parent="Player"]
+attenuation_model = 3
 
 [node name="DeathSoundPlayer" type="AudioStreamPlayer3D" parent="Player"]
+attenuation_model = 3
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Enemies" type="Node3D" parent="." groups=["Enemies"]]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_cciil")]
+[node name="enemy" parent="Enemies" node_paths=PackedStringArray("model") instance=ExtResource("20_5yv31")]
+transform = Transform3D(-0.863475, 0, 0.504392, 0, 1, 0, -0.504392, 0, -0.863475, -23.5754, 4.57457, 32.1891)
+detection_radius = 7.0
+model = NodePath(".")
+
+[node name="enemy7" parent="Enemies" node_paths=PackedStringArray("model") instance=ExtResource("20_5yv31")]
+transform = Transform3D(-0.0517609, 0, 0.998659, 0, 1, 0, -0.998659, 0, -0.0517609, -35.3179, 4.57457, 27.8983)
+detection_radius = 7.0
+model = NodePath(".")
+
+[node name="enemy8" parent="Enemies" node_paths=PackedStringArray("model") instance=ExtResource("20_5yv31")]
+transform = Transform3D(0.254231, 0, 0.967144, 0, 1, 0, -0.967144, 0, 0.254231, -59.6448, 4.41754, 30.9861)
+detection_radius = 7.0
+model = NodePath(".")
+
+[node name="enemy9" parent="Enemies" node_paths=PackedStringArray("model") instance=ExtResource("20_5yv31")]
+transform = Transform3D(-0.977769, 0, 0.209687, 0, 1, 0, -0.209687, 0, -0.977769, -61.6063, 3.25059, 47.3607)
+detection_radius = 7.0
+model = NodePath(".")
+
+[node name="enemy10" parent="Enemies" node_paths=PackedStringArray("model") instance=ExtResource("20_5yv31")]
+transform = Transform3D(0.858611, 0, 0.512628, 0, 1, 0, -0.512628, 0, 0.858611, -76.3784, 2.30165, 38.0248)
+detection_radius = 7.0
+model = NodePath(".")
+
+[node name="enemy11" parent="Enemies" node_paths=PackedStringArray("model") instance=ExtResource("20_5yv31")]
+transform = Transform3D(-0.948766, 0, 0.31598, 0, 1, 0, -0.31598, 0, -0.948766, -80.9538, 0.982235, 57.3178)
+detection_radius = 7.0
+model = NodePath(".")
+
+[node name="enemy6" parent="Enemies" node_paths=PackedStringArray("model") instance=ExtResource("20_5yv31")]
+transform = Transform3D(0.295158, 0, 0.955449, 0, 1, 0, -0.955449, 0, 0.295158, -26.6257, 4.57457, 18.3228)
+detection_radius = 7.0
+model = NodePath(".")
+
+[node name="enemy2" parent="Enemies" node_paths=PackedStringArray("model") instance=ExtResource("20_5yv31")]
+transform = Transform3D(0.0728378, 0, 0.997344, 0, 1, 0, -0.997344, 0, 0.0728378, 11.5634, -0.0751939, -22.934)
+detection_radius = 7.0
+model = NodePath(".")
+
+[node name="enemy3" parent="Enemies" node_paths=PackedStringArray("model") instance=ExtResource("20_5yv31")]
+transform = Transform3D(-0.754217, 0, 0.656625, 0, 1, 0, -0.656625, 0, -0.754217, 40.23, -0.00701261, -1.37967)
+detection_radius = 7.0
+model = NodePath(".")
+
+[node name="enemy5" parent="Enemies" node_paths=PackedStringArray("model") instance=ExtResource("20_5yv31")]
+transform = Transform3D(0.0816603, 0, -0.99666, 0, 1, 0, 0.99666, 0, 0.0816603, 47.2441, -0.00701261, -9.3289)
+detection_radius = 7.0
+model = NodePath(".")
+
+[node name="enemy4" parent="Enemies" node_paths=PackedStringArray("model") instance=ExtResource("20_5yv31")]
+transform = Transform3D(0.775, 0, -0.631962, 0, 1, 0, 0.631962, 0, 0.775, 45.1759, -0.00701261, -3.31304)
+detection_radius = 7.0
+model = NodePath(".")
 
 [node name="cliffs" type="Node3D" parent="."]
 
@@ -1648,60 +1728,8 @@ script = ExtResource("21_oka44")
 transform = Transform3D(9.34241, 0, 0, 0, 9.34241, 0, 0, 0, 9.34241, 0, 2.28542, 0)
 shape = SubResource("BoxShape3D_h31mj")
 
-[node name="Enemies" type="Node3D" parent="."]
-
-[node name="enemy" parent="Enemies" instance=ExtResource("20_5yv31")]
-transform = Transform3D(-0.863475, 0, 0.504392, 0, 1, 0, -0.504392, 0, -0.863475, -23.5754, 4.57457, 32.1891)
-detection_radius = 7.0
-
-[node name="enemy7" parent="Enemies" instance=ExtResource("20_5yv31")]
-transform = Transform3D(-0.0517609, 0, 0.998659, 0, 1, 0, -0.998659, 0, -0.0517609, -35.3179, 4.57457, 27.8983)
-detection_radius = 7.0
-
-[node name="enemy8" parent="Enemies" instance=ExtResource("20_5yv31")]
-transform = Transform3D(0.254231, 0, 0.967144, 0, 1, 0, -0.967144, 0, 0.254231, -59.6448, 4.41754, 30.9861)
-detection_radius = 7.0
-
-[node name="enemy9" parent="Enemies" instance=ExtResource("20_5yv31")]
-transform = Transform3D(-0.977769, 0, 0.209687, 0, 1, 0, -0.209687, 0, -0.977769, -61.6063, 3.25059, 47.3607)
-detection_radius = 7.0
-
-[node name="enemy10" parent="Enemies" instance=ExtResource("20_5yv31")]
-transform = Transform3D(0.858611, 0, 0.512628, 0, 1, 0, -0.512628, 0, 0.858611, -76.3784, 2.30165, 38.0248)
-detection_radius = 7.0
-
-[node name="enemy11" parent="Enemies" instance=ExtResource("20_5yv31")]
-transform = Transform3D(-0.948766, 0, 0.31598, 0, 1, 0, -0.31598, 0, -0.948766, -80.9538, 0.982235, 57.3178)
-detection_radius = 7.0
-
-[node name="enemy6" parent="Enemies" instance=ExtResource("20_5yv31")]
-transform = Transform3D(0.295158, 0, 0.955449, 0, 1, 0, -0.955449, 0, 0.295158, -26.6257, 4.57457, 18.3228)
-detection_radius = 7.0
-
-[node name="enemy2" parent="Enemies" instance=ExtResource("20_5yv31")]
-transform = Transform3D(0.0728378, 0, 0.997344, 0, 1, 0, -0.997344, 0, 0.0728378, 11.5634, -0.0751939, -22.934)
-detection_radius = 7.0
-
-[node name="enemy3" parent="Enemies" instance=ExtResource("20_5yv31")]
-transform = Transform3D(-0.754217, 0, 0.656625, 0, 1, 0, -0.656625, 0, -0.754217, 40.23, -0.00701261, -1.37967)
-detection_radius = 7.0
-
-[node name="enemy5" parent="Enemies" instance=ExtResource("20_5yv31")]
-transform = Transform3D(0.0816603, 0, -0.99666, 0, 1, 0, 0.99666, 0, 0.0816603, 47.2441, -0.00701261, -9.3289)
-detection_radius = 7.0
-
-[node name="enemy4" parent="Enemies" instance=ExtResource("20_5yv31")]
-transform = Transform3D(0.775, 0, -0.631962, 0, 1, 0, 0.631962, 0, 0.775, 45.1759, -0.00701261, -3.31304)
-detection_radius = 7.0
-
 [node name="Flag3D" parent="." instance=ExtResource("1_khj8f")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -107.815, -1.88673, 59.1479)
-
-[node name="killzone" parent="." instance=ExtResource("1_owr8o")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -2.56946, 0)
-
-[node name="water" parent="." instance=ExtResource("19_7ymwm")]
-transform = Transform3D(-287.78, 0, 0, 0, 1, 0, 0, 0, -287.78, 0, -1.70111, 0)
 
 [node name="boat" parent="." instance=ExtResource("1_kmi73")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.794, -1.80283, 59.1557)

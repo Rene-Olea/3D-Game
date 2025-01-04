@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8l2s7xrb42qa"
 path.s3tc="res://.godot/imported/palmTree_Ucupaint Cylinder Color.png-185dd1ec85561713b0b4b3f0bfbfa58c.s3tc.ctex"
+path.etc2="res://.godot/imported/palmTree_Ucupaint Cylinder Color.png-185dd1ec85561713b0b4b3f0bfbfa58c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/palmTree_Ucupaint Cylinder Color.png"
-dest_files=["res://.godot/imported/palmTree_Ucupaint Cylinder Color.png-185dd1ec85561713b0b4b3f0bfbfa58c.s3tc.ctex"]
+dest_files=["res://.godot/imported/palmTree_Ucupaint Cylinder Color.png-185dd1ec85561713b0b4b3f0bfbfa58c.s3tc.ctex", "res://.godot/imported/palmTree_Ucupaint Cylinder Color.png-185dd1ec85561713b0b4b3f0bfbfa58c.etc2.ctex"]
 
 [params]
 

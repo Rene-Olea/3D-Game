@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cry37l0lmq7ul"]
+[gd_scene load_steps=7 format=3 uid="uid://cry37l0lmq7ul"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_m4xoj"]
-[ext_resource type="AudioStream" uid="uid://bxrbomkpu7n7s" path="res://assets/sounds/Game Music/3D GAME MENU MUSIC.wav" id="2_tm34v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3076"]
 bg_color = Color(0.249023, 0.514654, 1, 1)
@@ -138,10 +137,6 @@ text = "Slime's Adventure:
 The Beginning..."
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_tm34v")
-autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

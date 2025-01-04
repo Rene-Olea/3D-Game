@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2mati3fakqtq"]
+[gd_scene load_steps=3 format=3 uid="uid://d2mati3fakqtq"]
 
 [ext_resource type="Script" path="res://scripts/about_menu.gd" id="1_ff24w"]
-[ext_resource type="AudioStream" uid="uid://bxrbomkpu7n7s" path="res://assets/sounds/Game Music/3D GAME MENU MUSIC.wav" id="2_bmcyd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw6n5"]
 bg_color = Color(0.25098, 0.513726, 1, 1)
@@ -61,14 +60,10 @@ text = "Slime's Adventure:
 The Beginning...
 
 The Functional Programmers
-Rene Olea: Programer, 3D Modeler, Textures
-Troy Grogan: Programer, Music and Sounds
+Rene Olea: Programmer, 3D Modeler, Animator, and Textures
+Troy Grogan: Programmer, Music, Sounds, and Game Lighting
 "
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_bmcyd")
-autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

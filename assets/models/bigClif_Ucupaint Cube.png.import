@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyhjldrk2vwrf"
 path.s3tc="res://.godot/imported/bigClif_Ucupaint Cube.png-d1b72488da08082e4708f76269505e0d.s3tc.ctex"
+path.etc2="res://.godot/imported/bigClif_Ucupaint Cube.png-d1b72488da08082e4708f76269505e0d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/bigClif_Ucupaint Cube.png"
-dest_files=["res://.godot/imported/bigClif_Ucupaint Cube.png-d1b72488da08082e4708f76269505e0d.s3tc.ctex"]
+dest_files=["res://.godot/imported/bigClif_Ucupaint Cube.png-d1b72488da08082e4708f76269505e0d.s3tc.ctex", "res://.godot/imported/bigClif_Ucupaint Cube.png-d1b72488da08082e4708f76269505e0d.etc2.ctex"]
 
 [params]
 

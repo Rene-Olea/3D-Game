@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://pbbh08mc62hg"
 path.s3tc="res://.godot/imported/boat_Ucupaint Cube.png-759e78241df66b7070fff430ebf59dad.s3tc.ctex"
+path.etc2="res://.godot/imported/boat_Ucupaint Cube.png-759e78241df66b7070fff430ebf59dad.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/boat_Ucupaint Cube.png"
-dest_files=["res://.godot/imported/boat_Ucupaint Cube.png-759e78241df66b7070fff430ebf59dad.s3tc.ctex"]
+dest_files=["res://.godot/imported/boat_Ucupaint Cube.png-759e78241df66b7070fff430ebf59dad.s3tc.ctex", "res://.godot/imported/boat_Ucupaint Cube.png-759e78241df66b7070fff430ebf59dad.etc2.ctex"]
 
 [params]
 

@@ -14,4 +14,4 @@ shader_parameter/far_plane = 100.0
 lightmap_size_hint = Vector2i(12, 12)
 material = SubResource("ShaderMaterial_h1a7g")
 flip_faces = true
-size = Vector2(2, 2)
+size = Vector2(3, 3)
