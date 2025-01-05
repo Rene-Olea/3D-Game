@@ -11,7 +11,8 @@
 # Game Concept and Music Created By Troy Grogan
 - The Menu Music was self made. Inspired by Mac DeMarco :)
 - The Game Level Music Samples the song "Incantation" By Bruce Haack
-https://open.spotify.com/track/4d1NnFpmTtVKQZki0ej42v?si=8ba75b70d09e4382
+[![Alt Text](![Farad- The Electric Voice Bruce Haack](https://github.com/user-attachments/assets/fe0461c2-21e3-4f4e-a2df-0e17a7a79e03))](https://open.spotify.com/track/4d1NnFpmTtVKQZki0ej42v?si=8ba75b70d09e4382
+)
 
 # Game Trailer
-https://www.youtube.com/watch?v=uOKJ9GB2LBc&ab_channel=Rango
+[![Alt Text](<img width="1440" alt="game trailer screenshot 1" src="https://github.com/user-attachments/assets/64984554-7ef6-4916-b521-68d40b680cb8" />)](https://www.youtube.com/watch?v=uOKJ9GB2LBc&ab_channel=Rango)
