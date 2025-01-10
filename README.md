@@ -10,7 +10,7 @@
 
 # Game Concept and Music Created By Troy Grogan
 - The Menu Music was self made. Inspired by Mac DeMarco :)
-- The Game Level Music Samples the song "Incantation" By Bruce Haack
+- The Game Level Music samples the song "Incantation" By Bruce Haack
 
 [ ![Farad- The Electric Voice Bruce Haack](https://github.com/user-attachments/assets/fe0461c2-21e3-4f4e-a2df-0e17a7a79e03) ](https://www.youtube.com/watch?v=jBMy1RWdux4&ab_channel=BruceHaack-Topic)
 
