@@ -13,6 +13,11 @@
 # Game Models, Animation, and Textures Created By Rene Olea
 
 # Game Concept and Music Created By Troy Grogan
+
+<div align="center">
+    <p><strong>📱 Mobile Users: If the first audio doesn't play, try tapping another player first, then return to your first choice.</strong></p>
+</div>
+
 <div align="center">
     <p>
     The Menu Music was self made. Inspired by Mac DeMarco :)
